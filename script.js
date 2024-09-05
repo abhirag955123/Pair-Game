@@ -11,12 +11,14 @@ const boxes = document.querySelectorAll('.box');
 const attemptCounter = document.getElementById('attempt-counter');
 
 
-(function shuffle() {
+function shuffle() {
     const shuffledColors = colors.sort(() => 0.5 - Math.random());
     boxes.forEach((box, index) => {
         box.dataset.color = shuffledColors[index];
+        box.classList.remove('flipped', 'matched');
+        box.style.backgroundColor = '#3498db';
     });
-})();
+}
 
 
 boxes.forEach(box => box.addEventListener('click', flipBox));
@@ -62,19 +64,9 @@ function resetBoard() {
 }
 
 function restartGame() {
-    lockBoard = true; 
-
-    boxes.forEach(box => {
-        box.classList.remove('flipped', 'matched');
-        box.style.backgroundColor = '#3498db';
-    });
-
     attempts = 0;
     attemptCounter.textContent = `Attempts: ${attempts}`;
-
-    shuffle();
-
-    setTimeout(() => {
-        lockBoard = false; 
-    }, 500); 
+    shuffle(); 
+    resetBoard();
 }
+shuffle();
