@@ -1,5 +1,4 @@
 
-alert("Chalo Game Khelte Hain " );
 
 const colors = [
     'red', 'blue', 'green', 'yellow', 'orange', 'purple', 'pink', 'brown',
