@@ -8,12 +8,15 @@
 
 
 .game-container {
+    flex: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     min-height: 100vh;
     background-color: #f0f0f0;
+    padding: 20px;
+    
 }
 
 .game-board {
@@ -35,9 +38,12 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    min-height: 80vh;
+    min-height: 100vh;
     font-family: Arial, sans-serif;
     background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+
 }
 
 h1 {
@@ -76,11 +82,11 @@ h1 {
     pointer-events: none;
 }
 
-footer {
+/*footer {
     width: 100%;
     background-color: #1b0f0f;
     padding: 20px;
-    position: absolute;
+    position: relative;
     bottom: 0;
     text-align: center;
     color: #fff;
@@ -108,7 +114,7 @@ footer {
     font-size: 14px;
     color: #ccc;
 }
-
+*/
 
 #attempt-counter{
     margin-top: 20px;

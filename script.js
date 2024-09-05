@@ -69,25 +69,3 @@ function restartGame() {
     });
     shuffle();
 }
-
-
-    let attemptCount = 0;
-
-    function checkForMatch() {
-    let isMatch = firstBox.dataset.color === secondBox.dataset.color;
-    attemptCount++; 
-    document.getElementById('attempt-counter').textContent = `Attempts: ${attemptCount}`;
-
-    if (isMatch) {
-        firstBox.classList.add('matched');
-        secondBox.classList.add('matched');
-        resetBoard();
-    } else {
-        lockBoard = true;
-        setTimeout(() => {
-            firstBox.style.backgroundColor = '#3498db';
-            secondBox.style.backgroundColor = '#3498db';
-            resetBoard();
-        }, 2000);
-    }
-}
