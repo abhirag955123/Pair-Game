@@ -1,5 +1,3 @@
-
-
 const colors = [
     'red', 'blue', 'green', 'yellow', 'orange', 'purple', 'pink', 'brown',
     'red', 'blue', 'green', 'yellow', 'orange', 'purple', 'pink', 'brown'
@@ -7,8 +5,10 @@ const colors = [
 
 let firstBox = null;
 let secondBox = null;
-let lockBoard = false; 
-let boxes = document.querySelectorAll('.box');
+let lockBoard = false;
+let attempts = 0;
+const boxes = document.querySelectorAll('.box');
+const attemptCounter = document.getElementById('attempt-counter');
 
 
 (function shuffle() {
@@ -29,10 +29,8 @@ function flipBox() {
     this.classList.add('flipped');
 
     if (!firstBox) {
-       
         firstBox = this;
     } else {
-        
         secondBox = this;
         checkForMatch();
     }
@@ -42,30 +40,41 @@ function checkForMatch() {
     let isMatch = firstBox.dataset.color === secondBox.dataset.color;
 
     if (isMatch) {
-        
         firstBox.classList.add('matched');
         secondBox.classList.add('matched');
         resetBoard();
     } else {
-       
         lockBoard = true;
         setTimeout(() => {
             firstBox.style.backgroundColor = '#3498db';
             secondBox.style.backgroundColor = '#3498db';
             resetBoard();
-        }, 2000);
+        }, 1000); 
     }
+
+    
+    attempts++;
+    attemptCounter.textContent = `Attempts: ${attempts}`;
 }
 
 function resetBoard() {
     [firstBox, secondBox, lockBoard] = [null, null, false];
 }
 
-
 function restartGame() {
+    lockBoard = true; 
+
     boxes.forEach(box => {
         box.classList.remove('flipped', 'matched');
         box.style.backgroundColor = '#3498db';
     });
+
+    attempts = 0;
+    attemptCounter.textContent = `Attempts: ${attempts}`;
+
     shuffle();
+
+    setTimeout(() => {
+        lockBoard = false; 
+    }, 500); 
 }
