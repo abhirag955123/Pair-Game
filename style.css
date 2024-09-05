@@ -110,4 +110,11 @@ footer {
 }
 
 
-
+#attempt-counter{
+    margin-top: 20px;
+    justify-content: center;
+    font-size: 25px;
+    font-weight: 500px;
+    font: bold;
+    
+}
